@@ -30,7 +30,7 @@
     "@unocss/astro": "66.10.2",
     "@unocss/reset": "66.10.2",
     "svelte-check": "4.7.6",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "unocss": "66.10.2"
   },
   "keywords": [
