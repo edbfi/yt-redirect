@@ -27,3 +27,6 @@ bun-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Generated native Svelte checker input
+.svelte-check/
