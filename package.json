@@ -9,7 +9,8 @@
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",
     "preview": "bunx --bun astro preview",
-    "check": "bunx --bun astro check && bunx --bun svelte-check --tsconfig ./tsconfig.json",
+    "check": "bunx --bun astro check && bunx --bun svelte-check --tsconfig ./tsconfig.json && bun run check:native",
+    "check:native": "bunx --bun svelte-check --tsgo --tsconfig ./tsconfig.json",
     "test": "bun test",
     "test:e2e": "bunx --bun playwright test",
     "lint": "bunx --bun biome check .",
@@ -22,6 +23,7 @@
     "svelte": "5.57.0"
   },
   "devDependencies": {
+    "@typescript/native": "npm:typescript@7.0.2",
     "@astrojs/check": "0.9.10",
     "@astrojs/svelte": "9.0.1",
     "@biomejs/biome": "2.5.14",
