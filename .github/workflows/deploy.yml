@@ -15,11 +15,6 @@ on:
     branches: [main]
     types: [completed]
   workflow_dispatch:
-    inputs:
-      expected-default-sha:
-        description: Exact default-branch commit to publish; empty uses current main
-        type: string
-        default: ''
 
 # Least privilege, stated explicitly rather than inherited from the repository
 # default (currently "write"). peaceiris/actions-gh-pages pushes the built site
