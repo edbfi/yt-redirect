@@ -50,5 +50,5 @@ Use `getTranslations` for keys known when you write the code, because it is type
 
 - `.agents/rules/astro-svelte5-islands.md`: generic reference for this stack (Svelte 5 runes, Astro islands, UnoCSS). Read it before writing a new Svelte component or Astro page. Its sample configs (Vitest, shadcn-svelte, `@unocss/extractor-svelte`, package scripts, `bunfig.toml`, Biome `html` option) don't describe this repo. Where they differ, this repo's config files win.
 - `README.md` "Adding a language": the five files to touch when adding a locale. Follow it step by step.
-- `CI.md`: CI lanes, required checks, and how to reproduce them locally. Read it before editing anything under `.github/`.
-- `.github/workflows/deploy.yml` and `.github/scripts/deployment.py`: the deploy gate (Pages runs only after main CI succeeds). Any change there needs matching updates in `tests/test_deployment.py`.
+- `CI.md`: local validation entry points. Read it before editing anything under `.github/`.
+- Deployment workflows are disabled.
