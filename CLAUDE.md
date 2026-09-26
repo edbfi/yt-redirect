@@ -19,7 +19,7 @@ Single static page (Astro 7, `output` static, no adapter) deployed from `dist/` 
 
 ## Gotchas
 
-- Biome 2.5.14 enables experimental full Svelte/Astro parsing and formatting, recommended lint rules, and import organization. Keep unused-code checks enabled; `biome.json` defines scoped exclusions. Run `bun run lint:fix`, then `bun run check` after component changes.
+- Biome 2.5.13 enables experimental full Svelte/Astro parsing and formatting, recommended lint rules, and import organization. Keep unused-code checks enabled; `biome.json` defines scoped exclusions. Run `bun run lint:fix`, then `bun run check` after component changes.
 
 - E2E serves the built `dist/` through `scripts/serve-dist.ts`, not `astro preview`, because Astro 7's preview runs as a daemon and Playwright's `webServer` then exits early. Rebuild before every e2e run, or you are testing stale output. Locally Playwright reuses anything already listening on 4321, so stop `bun run dev` first or the suite runs against the dev server.
 - Keep Playwright specs in `e2e/`. `bun test` only looks under `src/`, and it can't run `@playwright/test` specs.
