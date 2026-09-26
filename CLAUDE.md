@@ -20,6 +20,8 @@ Single static page (Astro 7, `output` static, no adapter) deployed from `dist/` 
 
 ## Gotchas
 
+- Biome 2.5.14 enables experimental full Svelte/Astro parsing and formatting, recommended lint rules, and import organization. Keep unused-code checks enabled; `biome.json` defines scoped exclusions. Run `bun run lint:fix`, then `bun run check` after component changes.
+
 - E2E serves the built `dist/` through `scripts/serve-dist.ts`, not `astro preview`, because Astro 7's preview runs as a daemon and Playwright's `webServer` then exits early. Rebuild before every e2e run, or you are testing stale output. Locally Playwright reuses anything already listening on 4321, so stop `bun run dev` first or the suite runs against the dev server.
 - Keep Playwright specs in `e2e/`. `bun test` only looks under `src/`, and it can't run `@playwright/test` specs.
 - Dark mode comes only from the OS: `presetWind4({ dark: "media" })` in `uno.config.ts`, with no `.dark` class and no toggle. Don't switch it to class mode or add a theme toggle, because every `dark:` utility would silently stop matching. `e2e/appearance.spec.ts` checks this.
@@ -48,6 +50,6 @@ Use `getTranslations` for keys known when you write the code, because it is type
 
 ## Reference
 
-- `.agents/rules/astro-svelte5-islands.md`: generic reference for this stack (Svelte 5 runes, Astro islands, UnoCSS). Read it before writing a new Svelte component or Astro page. Its sample configs (Vitest, shadcn-svelte, `@unocss/extractor-svelte`, package scripts, `bunfig.toml`, Biome `html` option) don't describe this repo. Where they differ, this repo's config files win.
+- `.agents/rules/astro-svelte5-islands.md`: generic reference for this stack (Svelte 5 runes, Astro islands, UnoCSS). Read it before writing a new Svelte component or Astro page. Its sample configs (Vitest, shadcn-svelte, `@unocss/extractor-svelte`, package scripts, `bunfig.toml`) don't describe this repo. Where they differ, this repo's config files win.
 - `README.md` "Adding a language": the five files to touch when adding a locale. Follow it step by step.
 - Deployment workflows are disabled.

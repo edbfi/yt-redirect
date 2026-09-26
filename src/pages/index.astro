@@ -27,92 +27,82 @@ const translations = getTranslations(defaultLang);
 
 <!DOCTYPE html>
 <html lang={defaultLang}>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={translations.app.description} />
-		<meta name="theme-color" content="#ef4444" />
-		{/*			Dark mode is the operating system's and nothing else: there is no theme
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content={Astro.generator}>
+    <meta name="description" content={translations.app.description}>
+    <meta name="theme-color" content="#ef4444">
+    {/*			Dark mode is the operating system's and nothing else: there is no theme
 			toggle and no `.dark` class on this page. uno.config.ts sets
 			`presetWind4({ dark: "media" })` so every `dark:` utility compiles to a
 			`prefers-color-scheme` query that this declaration opts the page into.*/}
-		<meta name="color-scheme" content="light dark" />
-		<title>{translations.app.title}</title>
-	</head>
-	<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-		<!-- Language Switcher -->
-		<LanguageSwitcher client:load />
+    <meta name="color-scheme" content="light dark">
+    <title>{translations.app.title}</title>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800"
+  >
+    <!-- Language Switcher -->
+    <LanguageSwitcher client:load />
 
-		<!-- Main Content -->
-		<main class="flex items-center justify-center min-h-screen px-4 py-12">
-			<div class="w-full max-w-2xl">
-				{/*					client:load, not client:visible: this is the whole page, above the
+    <!-- Main Content -->
+    <main class="flex items-center justify-center min-h-screen px-4 py-12">
+      <div class="w-full max-w-2xl">
+        {/*					client:load, not client:visible: this is the whole page, above the
 					fold, and it is the only thing the visitor came here to use.*/}
-				<ConverterForm client:load>
-					{/*						Rendered by Astro rather than by the island, because `<Image>` is a
+        <ConverterForm client:load>
+          {/*						Rendered by Astro rather than by the island, because `<Image>` is a
 						build-time component: it emits the optimised `/_astro/…` asset and
 						its intrinsic dimensions. Astro hands the result to the island as a
 						snippet, so the markup below is exactly what ships.*/}
-					<Fragment slot="footerLinks">
-						<div class="flex items-center justify-center gap-4 mt-6">
-							<a
-								href="https://edb.fi"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-								aria-label="Visit edb.fi"
-							>
-								<Image
-									src={edbpedeIcon}
-									alt="edbpede logo"
-									width={32}
-									height={32}
-									class="w-8 h-8"
-								/>
-							</a>
-							<a
-								href="https://github.com/edbfi/yt-redirect"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-								aria-label="View GitHub repository"
-							>
-								<Image
-									src={githubIcon}
-									alt="GitHub"
-									width={32}
-									height={32}
-									class="w-8 h-8"
-								/>
-							</a>
-							<a
-								href="https://www.gnu.org/licenses/agpl-3.0.en.html"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-								aria-label="AGPL v3 License"
-							>
-								{/*									height is 24, not 32, so that 72x24 matches the source's own
+          <Fragment slot="footerLinks">
+            <div class="flex items-center justify-center gap-4 mt-6">
+              <a
+                href="https://edb.fi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                aria-label="Visit edb.fi"
+              >
+                <Image
+                  src={edbpedeIcon}
+                  alt="edbpede logo"
+                  width={32}
+                  height={32}
+                  class="w-8 h-8"
+                />
+              </a>
+              <a
+                href="https://github.com/edbfi/yt-redirect"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                aria-label="View GitHub repository"
+              >
+                <Image src={githubIcon} alt="GitHub" width={32} height={32} class="w-8 h-8" />
+              </a>
+              <a
+                href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 bg-white dark:bg-slate-400 rounded-lg shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                aria-label="AGPL v3 License"
+              >
+                {/*									height is 24, not 32, so that 72x24 matches the source's own
 									3.04 aspect ratio (agplv3_icon.png is 155x51). Astro 5 ignored
 									the mismatched height and emitted 72x24 anyway; Astro 7 honours
 									both dimensions and would emit a cropped, vertically stretched
 									72x32 badge instead. The rendered size is unchanged either way
 									-- `w-16 h-8` sizes the box at 64x32 -- so this keeps the footer
 									pixel-identical to the pre-migration build.*/}
-								<Image
-									src={agplIcon}
-									alt="AGPL v3"
-									width={72}
-									height={24}
-									class="w-16 h-8"
-								/>
-							</a>
-						</div>
-					</Fragment>
-				</ConverterForm>
-			</div>
-		</main>
-	</body>
+                <Image src={agplIcon} alt="AGPL v3" width={72} height={24} class="w-16 h-8" />
+              </a>
+            </div>
+          </Fragment>
+        </ConverterForm>
+      </div>
+    </main>
+  </body>
 </html>

@@ -515,33 +515,22 @@ import hero from '../assets/hero.jpg';
 
 ## Biome: formatting and linting
 
-Biome is the formatter and linter for JS/TS/JSON/CSS. Its Vue/Svelte/Astro support is opt-in and still experimental — per the Biome v2.3 release, "this feature is marked as experimental… To enable the feature, you'll have to opt in the new `html.experimentalFullSupportEnabled` option." Turn off the handful of rules that false-positive across the embedded-language boundary in `.svelte`/`.astro` files. Since v2.4 Biome handles most Svelte 5 control-flow syntax (`{#if}{/if}`), but per its docs "newer features, rare syntax, or edge cases might not be covered yet." Biome does **not** type-check, so it complements — never replaces — `astro check` and `svelte-check`.
+The repository pins Biome 2.5.14. `biome.json` is the source of truth for formatting,
+lint rules, import organization and file exclusions. Full Svelte/Astro support is
+experimental and enabled with both `html.experimentalFullSupportEnabled: true`
+and `html.formatter.enabled: true`. Recommended lint and assist rules remain
+active for these files; add narrowly scoped exceptions only for verified parser
+or rule limitations. Do not disable unused-code checks across the project.
 
-```jsonc
-// biome.json
-{
-  "$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
-  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
-  "linter": { "enabled": true, "rules": { "recommended": true } },
-  "html": { "experimentalFullSupportEnabled": true },
-  "overrides": [
-    {
-      "includes": ["**/*.svelte", "**/*.astro"],
-      "linter": {
-        "rules": {
-          "style": { "useConst": "off", "useImportType": "off" },
-          "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" }
-        }
-      }
-    }
-  ]
-}
-```
+Use `linter.rules.preset: "recommended"`; the older `recommended: true` option
+is deprecated. Global formatter settings apply consistently to embedded JS and
+CSS. Build outputs and tool caches use force-ignore (`!!`) patterns, while
+generated type directories use ordinary ignores (`!`) so analysis can still
+resolve imported types. VCS ignores are enabled.
 
-Commands: `biome check --write .` formats and applies safe lint fixes; `biome check .` is the read-only CI gate. Run through Bun with `bunx biome check .` if Biome is not a direct dependency.
-
-Type-check separately: `astro check` (validates `.astro` files and frontmatter, uses the Astro language server) and `bunx svelte-check` (validates `.svelte` components). Both should run in CI alongside `biome check`.
+`bun run lint` checks the project; `bun run lint:fix` formats and applies safe
+fixes. Review changes to experimental Svelte/Astro files. Biome does not replace
+type-checking: run `bun run check` to validate Astro and both Svelte checkers.
 
 ## Testing
 
