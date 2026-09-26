@@ -6,7 +6,6 @@ Single static page (Astro 7, `output` static, no adapter) deployed from `dist/` 
 
 ## Commands
 
-- `bun install --frozen-lockfile` (versions are exact-pinned; Renovate owns bumps)
 - `bun run dev` (port 4321), `bun run build` (to `dist/`)
 - `bun run check`: `astro check` + `svelte-check` + `svelte-check --tsgo` (native TypeScript 7). All three must pass.
 - `bun run lint` / `bun run lint:fix`: Biome. CI runs `bunx --bun biome ci .`
