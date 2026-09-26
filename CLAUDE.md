@@ -8,15 +8,14 @@ Single static page (Astro 7, `output` static, no adapter) deployed from `dist/` 
 
 - `bun run dev` (port 4321), `bun run build` (to `dist/`)
 - `bun run check`: `astro check` + `svelte-check` + `svelte-check --tsgo` (native TypeScript 7). All three must pass.
-- `bun run lint` / `bun run lint:fix`: Biome. CI runs `bunx --bun biome ci .`
+- `bun run lint` / `bun run lint:fix`: Biome. `bunx --bun biome ci .` is the read-only check.
 - Unit tests: `bun test` (scoped to `src/` by `bunfig.toml`, uses `bun:test`, there is no Vitest)
   - one file: `bun test src/utils/youtube-converter.test.ts`
   - one case: `bun test src/utils/youtube-converter.test.ts -t "normalizeUrl"`
-- Deploy-selection tests: `python3 -B -m unittest discover -s tests -p 'test_*.py'` (covers `.github/scripts/deployment.py`)
 - E2E: `bun run build` first, then `bun run test:e2e`
   - one test: `bun run test:e2e e2e/converter.spec.ts -g "converts a standard watch link"`
   - one-time browser install: `bunx --bun playwright install chromium`
-- Full local CI: `bash .github/scripts/check.sh`, then `bash .github/scripts/smoke.sh`
+- Full local check: `bunx --bun biome ci .`, `bun run check`, `bun test`, `bun run build`
 
 ## Gotchas
 
@@ -30,7 +29,7 @@ Single static page (Astro 7, `output` static, no adapter) deployed from `dist/` 
 - The HTML is rendered in Danish (`defaultLang`), and the islands switch languages after hydration. Text that has to change with the language must be rendered inside an island (`ConverterForm.svelte` or `LanguageSwitcher.svelte`), not in `src/pages/index.astro`. `astro:assets` `<Image>` can't render inside an island, so the page renders it and passes it into `ConverterForm` through the `footerLinks` slot/snippet.
 - The shape of `src/i18n/locales/da.json` defines the `TranslationKeys` type. Add every new key to both `da.json` and `en.json`.
 - `convertYouTubeUrl` returns an error *key*, and the form turns it into a message with ``t(lang, `errors.${key}`)``. A new error needs an `errors.<key>` entry in both locale files. Always pass input through `normalizeUrl` first, because input without a scheme is otherwise rejected as `invalidUrl`.
-- The element ids (`#youtube-url`, `#submit-button`, `#language-button`, `#app-title`, …) and the Danish button text "Konverter og Åbn" are asserted by `e2e/*.spec.ts` and `.github/scripts/smoke.sh`. If you rename one, update those files in the same change.
+- The element ids (`#youtube-url`, `#submit-button`, `#language-button`, `#app-title`, …) are asserted by `e2e/*.spec.ts`. If you rename one, update those specs in the same change.
 - Import with relative paths, as the existing code does. The `@/*` and `$lib` aliases in `tsconfig.json` are unused.
 - prek blocks local commits to `main` (`no-commit-to-branch`) and checks commit messages with `conventional-pre-commit`. PR titles must also be Conventional Commits. Do your work on a branch.
 
