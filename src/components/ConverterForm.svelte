@@ -112,8 +112,8 @@ function convert(event: SubmitEvent): void {
         aria-describedby={errorKey === null ? undefined : "error-message"}
         bind:value={url}
         oninput={() => {
-  errorKey = null;
-}}
+          errorKey = null;
+        }}
       >
     </div>
 

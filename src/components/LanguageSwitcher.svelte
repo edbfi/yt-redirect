@@ -83,8 +83,8 @@ function closeOnOutsideClick(event: MouseEvent): void {
       aria-haspopup="menu"
       aria-controls="language-menu"
       onclick={() => {
-  open = !open;
-}}
+        open = !open;
+      }}
     >
       <svg
         aria-hidden="true"
