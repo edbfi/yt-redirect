@@ -41,7 +41,7 @@ async function auditDarkRules(page: import("@playwright/test").Page) {
 }
 
 test("dark utilities compile to a media query, not to a .dark class", async ({ page }) => {
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
 
   const audit = await auditDarkRules(page);
   expect(audit.underDarkClass).toBe(0);
@@ -49,7 +49,7 @@ test("dark utilities compile to a media query, not to a .dark class", async ({ p
 });
 
 test("no .dark class is ever put on the document", async ({ page }) => {
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
   await expect(page.locator("html")).not.toHaveClass(/(^|\s)dark(\s|$)/);
   await expect(page.locator("body")).not.toHaveClass(/(^|\s)dark(\s|$)/);
 });
@@ -67,7 +67,7 @@ test("the palette follows the operating system preference", async ({ page }) => 
     });
 
   await page.emulateMedia({ colorScheme: "light" });
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
   const light = await read();
 
   await page.emulateMedia({ colorScheme: "dark" });
@@ -84,6 +84,6 @@ test("the palette follows the operating system preference", async ({ page }) => 
 test("the page declares that it supports both schemes", async ({ page }) => {
   // Without this the browser paints form controls and scrollbars light even
   // where the page is dark, and `prefers-color-scheme` styling looks half-applied.
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
   await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute("content", "light dark");
 });

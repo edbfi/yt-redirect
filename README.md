@@ -33,7 +33,8 @@ bun run build    # static build to ./dist/
 | `bun run test:e2e` | Playwright end-to-end tests against the built site |
 | `bun run lint` / `lint:fix` | Biome check / check with safe fixes |
 
-`bun run test:e2e` needs a browser once: `bunx --bun playwright install chromium`.
+`bun run test:e2e` needs a browser once: `bunx --bun playwright install chromium`. It serves
+the current `./dist/`, so run `bun run build` first.
 
 ## How it is put together
 

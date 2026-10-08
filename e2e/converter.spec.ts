@@ -3,10 +3,9 @@ import { expect, type Page, test } from "@playwright/test";
 /**
  * The converter form.
  *
- * Everything this page does happens in the browser, so this file — not
- * .github/workflows/smoke.yml — is what actually covers it. smoke.yml says so
- * itself: a prerendered Astro page answers 200 with a valid <title> even when
- * the island never hydrates.
+ * Everything this page does happens in the browser, so this file is what
+ * actually covers it: a prerendered Astro page answers 200 with a valid <title>
+ * even when the island never hydrates. This suite is the CI smoke job.
  */
 
 /**
@@ -27,7 +26,7 @@ async function captureRedirects(page: Page): Promise<string[]> {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
   // The island owns the field, so nothing below is meaningful until it hydrates.
   await expect(page.locator("#youtube-url")).toBeEnabled();
 });

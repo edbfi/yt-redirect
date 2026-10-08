@@ -11,7 +11,7 @@ import { LANGUAGE_STORAGE_KEY } from "../src/lib/stores/language";
  */
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/");
+  expect((await page.goto("/"))?.status()).toBe(200);
   await expect(page.locator("#current-language")).toHaveText("Dansk");
 });
 
