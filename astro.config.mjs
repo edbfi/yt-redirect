@@ -15,8 +15,6 @@ export default defineConfig({
   ],
   vite: {
     build: {
-      // Use esbuild for fast minification
-      minify: "esbuild",
       // Enable CSS code splitting
       cssCodeSplit: false, // Keep CSS in one file for this small app
     },
