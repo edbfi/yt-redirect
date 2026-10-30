@@ -81,14 +81,14 @@ repos:
         always_run: true
       - id: tests
         name: Unit tests
-        entry: bun test
+        entry: bun run --bun test
         language: system
         pass_filenames: false
         always_run: true
       # The package script runs Astro, Svelte, and native TypeScript checks together.
       - id: astro-svelte-check
         name: astro and svelte check
-        entry: bun run check
+        entry: bun run --bun check
         language: system
         always_run: true
         pass_filenames: false
