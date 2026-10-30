@@ -13,7 +13,7 @@
     "check:native": "bunx --bun svelte-check --tsgo --tsconfig ./tsconfig.json",
     "test": "bun test",
     "test:e2e": "bunx --bun playwright test",
-    "lint": "bunx --bun biome check .",
+    "lint": "bun --bun biome ci",
     "lint:fix": "bunx --bun biome check --write ."
   },
   "dependencies": {
