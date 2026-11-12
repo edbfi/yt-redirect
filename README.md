@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/favicon.svg" alt="yt-redirect logo" width="256" height="256">
+  <img src="public/favicon.svg" alt="yt-redirect logo" width="160" height="160">
 </p>
 
 <h1 align="center">yt-redirect</h1>
@@ -82,5 +82,6 @@ it can be unit-tested directly.
 
 ## License
 
-This project is open source and available under the
-[GNU Affero General Public License v3.0](LICENSE).
+Original code in this project is licensed under the
+[GNU Affero General Public License](LICENSE), version 3 or (at your option) any later
+version (`AGPL-3.0-or-later`). Third-party components retain their respective licenses.
