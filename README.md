@@ -1,9 +1,33 @@
-# YouTube Link Converter
+<p align="center">
+  <img src="public/favicon.svg" alt="yt-redirect logo" width="256" height="256">
+</p>
+
+<h1 align="center">yt-redirect</h1>
+
+<p align="center"><strong>Convert YouTube links to yout-ube.com in your browser.</strong></p>
+
+<p align="center">
+  <a href="https://github.com/edbfi/yt-redirect/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-AGPL--3.0--or--later-blue?style=flat" alt="License: AGPL-3.0-or-later">
+  </a>
+  <a href="https://github.com/oven-sh/bun" title="Bun source">
+    <img src="https://img.shields.io/badge/Bun-000000?style=flat&amp;logo=bun&amp;logoColor=white" alt="Bun">
+  </a>
+  <a href="https://github.com/withastro/astro" title="Astro source">
+    <img src="https://img.shields.io/badge/Astro-BC52EE?style=flat&amp;logo=astro&amp;logoColor=white" alt="Astro">
+  </a>
+  <a href="https://github.com/sveltejs/svelte" title="Svelte source">
+    <img src="https://img.shields.io/badge/Svelte-FF3E00?style=flat&amp;logo=svelte&amp;logoColor=white" alt="Svelte">
+  </a>
+  <a href="https://github.com/microsoft/TypeScript" title="TypeScript source">
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&amp;logo=typescript&amp;logoColor=white" alt="TypeScript">
+  </a>
+</p>
+
+Live at [yt.edb.fi](https://yt.edb.fi).
 
 A minimalist web app that converts YouTube links to yout-ube.com equivalents with automatic
 redirection. Built with Astro 7, Svelte 5 islands, TypeScript and UnoCSS, run by Bun.
-
-Live at [yt.edb.fi](https://yt.edb.fi).
 
 ## Features
 
