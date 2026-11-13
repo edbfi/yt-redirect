@@ -22,6 +22,7 @@
   <a href="https://github.com/microsoft/TypeScript" title="TypeScript source">
     <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&amp;logo=typescript&amp;logoColor=white" alt="TypeScript">
   </a>
+  <a href="https://github.com/edbfi/yt-redirect/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://img.shields.io/github/actions/workflow/status/edbfi/yt-redirect/ci.yml?branch=main&amp;event=push&amp;label=CI&amp;style=flat" alt="CI"></a>
 </p>
 
 Live at [yt.edb.fi](https://yt.edb.fi).
